@@ -20,6 +20,4 @@ public:
 	void add(const int&, ProductHandler);
 	void remove();
 	void print() const;
-
-	friend class Shop;
 };
