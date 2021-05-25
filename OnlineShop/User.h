@@ -1,6 +1,6 @@
 #pragma once
 #include "BankAccount.h"
-#include "Products.h"
+#include "ProductHandler.h"
 #include "Cart.h"
 #include <string>
 
@@ -25,7 +25,7 @@ public:
 	const BankAccount getBankAccount();
 	const Cart getCart();
 
-	void addToCart();
+	void addToCart(ProductHandler);
 	void removeFromCart();
 	void input();
 };

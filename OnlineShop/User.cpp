@@ -38,18 +38,15 @@ const Cart User::getCart() {
 	return cart;
 }
 
-void User::addToCart() {
-	int position;
+void User::addToCart(ProductHandler productHandler){
+	int position; // the position of the product from the vector in ProductHandler
 	cout << "Please, enter the number of the product to add to your cart: ";
 	std::cin >> position;
-	cart.add(position);
+	cart.add(position, productHandler);
 }
 
 void User::removeFromCart() {
-	cout << "Please, enter the number of the product to remove from your cart: ";
-	int position;
-	cin >> position;
-	cart.remove(position);
+	cart.remove();
 }
 
 void User::input() {

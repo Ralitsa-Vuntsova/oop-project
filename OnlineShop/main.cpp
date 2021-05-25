@@ -9,29 +9,19 @@ using std::endl;
 int main() {
 	Shop shop = Shop::instance();
 	User* user = nullptr;
-
 	char key;
 
-	// Test for login and registration
-	do { // first do this then check the condition
-		cout << "L = login" << endl;
-		cout << "R = registration" << endl;
-		cout << "Choose L or R: ";
-		cin >> key;
+	// Test: registration
+	cout << "Please, register:" << std::endl;
+	user = shop.registration();
 
-		switch (key) {
-		case 'L':
-			user = shop.login();
-			break;
-		case 'R':
-			user = shop.registration();
-			break;
-		default:
-			cout << "Wrong input!" << endl;
-		}
-	} while (user == nullptr);
+	// Test: login
+	cout << "Please, log in:" << std::endl;
+	user = shop.login();
 
-	// Test for shop
+	// Test: adding, removing and printing products to/from the shop
+	// Note: We can't add products with the same properties again,
+	// or, for example, same brand and model but with different count!
 	do {
 		cout << "A = Add new product to shop." << endl;
 		cout << "R = Remove product from shop." << endl;
@@ -57,31 +47,32 @@ int main() {
 		}
 	} while (key != 'Q');
 
-	// Test for user - still doesn't work :(
+	// Test: adding, removing and printing to/from the cart of a user
+	// Note: When we remove from the cart, we remove all the counts of a product!
 	do {
-		cout << "a = Add new product to cart." << endl;
-		cout << "r = Remove product from cart." << endl;
-		cout << "p = Print products in cart." << endl;
-		cout << "q = Quit" << endl;
-		cout << "Choose a, r, p or q: ";
+		cout << "A = Add new product to cart." << endl;
+		cout << "R = Remove product from cart." << endl;
+		cout << "P = Print products in cart." << endl;
+		cout << "Q = Quit" << endl;
+		cout << "Choose A, R, P or Q: ";
 		cin >> key;
 
 		switch (key) {
-		case 'a':
+		case 'A':
 			shop.addToCart();
 			break;
-		case 'r':
+		case 'R':
 			shop.removeFromCart();
 			break;
-		case 'p':
+		case 'P':
 			shop.printCart();
 			break;
-		case 'q':
+		case 'Q':
 			break;
 		default:
 			cout << "Wrong input!" << endl;
 		}
-	} while (key != 'q');
+	} while (key != 'Q');
 
 	system("pause");
 	return 0;

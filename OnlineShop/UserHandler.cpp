@@ -1,25 +1,25 @@
 #include <iostream>
-#include "Users.h"
+#include "UserHandler.h"
 
 using std::cout;
 using std::cin;
 
-Users::Users() : numberOfUsers(0) {}
+UserHandler::UserHandler() : numberOfUsers(0) {}
 
-Users &Users::instance() {
-	static Users inst;
+UserHandler&UserHandler::instance() {
+	static UserHandler inst;
 	return inst;
 }
 
-const std::vector<User> Users::getUsers() const {
+const std::vector<User> UserHandler::getUsers() const {
 	return users;
 }
 
-const int Users::getNumberOfUsers() const {
+const int UserHandler::getNumberOfUsers() const {
 	return numberOfUsers;
 }
 
-User* Users::login() {
+User* UserHandler::login() {
 	std::string usern;
 	cout << "Please, enter your username: ";
 	cin >> usern;
@@ -39,7 +39,7 @@ User* Users::login() {
 	return nullptr;
 }
 
-User* Users::registration() {
+User* UserHandler::registration() {
 	User newUser;
 	newUser.input();
 

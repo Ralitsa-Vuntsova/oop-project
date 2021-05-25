@@ -1,13 +1,13 @@
 #include <iostream>
 #include <iomanip>
-#include "Products.h"
+#include "ProductHandler.h"
 
 using std::cout;
 using std::cin;
 
-Products::Products() : numberOfProducts(0) {}
+ProductHandler::ProductHandler() : numberOfProducts(0) {}
 
-void Products::add() {
+void ProductHandler::add() {
 	cout << "Please, enter type of product to add: ";
 	std::string typeOfProduct;
 	cin >> typeOfProduct;
@@ -36,14 +36,17 @@ void Products::add() {
 		product.input();
 		addProduct(product);
 	}
+	else {
+		cout << "Wrong input!" << std::endl;
+	}
 }
 
-void Products::addProduct(const Product& product) {
+void ProductHandler::addProduct(const Product& product) {
 	products.push_back(product);
 	numberOfProducts++;
 }
 
-void Products::remove() {
+void ProductHandler::remove() {
 	cout << "Please, enter the number of the product to remove: ";
 	int position;
 	cin >> position;
@@ -51,7 +54,7 @@ void Products::remove() {
 	numberOfProducts--;
 }
 
-void Products::removeProduct(const int& position) {
+void ProductHandler::removeProduct(const int& position) {
 	if (position >= 0 && position < numberOfProducts) {
 		products.erase(products.begin() + position);
 	}
@@ -60,21 +63,21 @@ void Products::removeProduct(const int& position) {
 	}
 }
 
-Products &Products::instance() {
-	static Products inst;
+ProductHandler&ProductHandler::instance() {
+	static ProductHandler inst;
 	return inst;
 }
 
-const std::vector<Product> Products::getProducts() const {
+const std::vector<Product> ProductHandler::getProducts() const {
 	return products;
 }
 
-const int Products::getNumberOfProducts() const {
+const int ProductHandler::getNumberOfProducts() const {
 	return numberOfProducts;
 }
 
-void Products::print() const {
+void ProductHandler::print() const {
 	for (int i = 0; i < numberOfProducts; i++) {
-		cout << i << ") " << products[i].getProduct() << ", " << products[i] << std::endl;
+		cout << i << ") " << products[i] << std::endl;
 	}
 }

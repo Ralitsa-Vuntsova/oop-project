@@ -5,25 +5,29 @@ Shop::Shop() {
 	user = nullptr;
 }
 
-Shop & Shop::instance() {
+Shop&Shop::instance() {
 	static Shop inst;
 	return inst;
 }
 
-const Products Shop::getProductManager() const {
-	return productManager;
+const UserHandler Shop::getUserHandler() const {
+	return userHandler;
+}
+
+const ProductHandler Shop::getProductHandler() const {
+	return productHandler;
 }
 
 void Shop::add() {
-	productManager.add();
+	productHandler.add();
 }
 
 void Shop::addToCart() {
-	user->addToCart();
+	user->addToCart(productHandler);
 }
 
 void Shop::remove() {
-	productManager.remove();
+	productHandler.remove();
 }
 
 void Shop::removeFromCart() {
@@ -31,7 +35,7 @@ void Shop::removeFromCart() {
 }
 
 void Shop::print() const {
-	productManager.print();
+	productHandler.print();
 }
 
 void Shop::printCart() const {
@@ -39,18 +43,18 @@ void Shop::printCart() const {
 }
 
 User* Shop::login() {
-	user = userManager.login();
+	user = userHandler.login();
 	if (user == nullptr) {
-		std::cout << "Wrong username!" << std::endl;
+		std::cout << "Wrong username or password!" << std::endl;
 		return nullptr;
 	}
 	return user;
 }
 
 User* Shop::registration() {
-	user = userManager.registration();
+	user = userHandler.registration();
 	if (user == nullptr) {
-		std::cout << "Username taken!" << std::endl;
+		std::cout << "Username already taken!" << std::endl;
 		return nullptr;
 	}
 	return user;

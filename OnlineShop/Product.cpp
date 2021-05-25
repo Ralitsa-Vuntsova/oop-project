@@ -68,14 +68,12 @@ void Product::input() {
 	cout << "Please, enter SKU: ";
 	cin >> SKU;
 
-	// priemame che nyama space-ove, inache tryabva da se izpolzva getline()
 	cout << "Please, enter brand: ";
 	cin >> brand;
 
 	cout << "Please, enter model: ";
 	cin >> model;
 
-	std::string col;
 	cout << "Please, enter color: ";
 	cin >> color;
 
@@ -91,24 +89,8 @@ std::ostream& Product::print(std::ostream& out) const {
 	return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const product& type) {
-	if (type == boots) {
-		out << "boots";
-	}
-	if (type == sneakers) {
-		out << "sneakers";
-	}
-	if (type == sandals) {
-		out << "sandals";
-	}
-	if (type == trainers) {
-		out << "trainers";
-	}
-	if (type == others) {
-		out << "others";
-	}
-
-	return out;
+bool operator==(const Product& lhs, const Product& rhs) {
+	return lhs.getBrand() == rhs.getBrand() && lhs.getColor() == rhs.getColor() && lhs.getCount() == rhs.getCount() && lhs.getModel() == rhs.getModel() && lhs.getPrice() == rhs.getPrice() && lhs.getProduct() == rhs.getProduct() && lhs.getSKU() == rhs.getSKU();
 }
 
 std::ostream& operator<<(std::ostream& out, const Product& pr) {

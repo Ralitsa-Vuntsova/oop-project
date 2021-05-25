@@ -6,23 +6,21 @@
 #include "Trainers.h"
 #include <vector>
 
-class Products { // to help manage all the products in the shop
+class ProductHandler { // to help manage all the products in the shop
 private:
 	std::vector<Product> products;
 	int numberOfProducts;
 
-	Products();
-
-	void addProduct(const Product&);
-	void removeProduct(const int&);
-
+	ProductHandler();
 public:
-	static Products& instance();
-
+	static ProductHandler& instance();
+	
 	const std::vector<Product> getProducts() const;
 	const int getNumberOfProducts() const;
 
-	void add(); // add product to the shop
-	void remove(); // remove product from the shop
+	void add(); 
+	void addProduct(const Product&); // add product to the shop (by product)
+	void remove(); 
+	void removeProduct(const int&); // remove product from the shop (by position)
 	void print() const;
 };

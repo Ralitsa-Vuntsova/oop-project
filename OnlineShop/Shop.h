@@ -1,20 +1,21 @@
 #pragma once
 #include "User.h"
-#include "Users.h"
-#include "Products.h"
+#include "UserHandler.h"
+#include "ProductHandler.h"
 
-class Shop { // to use in main
+class Shop { // test purposes only
 private:
 	User* user;
-	Users userManager = Users::instance();
-	Products productManager = Products::instance();
+	UserHandler userHandler = UserHandler::instance();
+	ProductHandler productHandler = ProductHandler::instance();
 
 	Shop();
 
 public:
 	static Shop& instance();
 
-	const Products getProductManager() const;
+	const UserHandler getUserHandler() const;
+	const ProductHandler getProductHandler() const;
 
 	void add();
 	void addToCart();
@@ -25,6 +26,8 @@ public:
 
 	User* login();
 	User* registration();
+
+	friend class Cart;
 };
 
 

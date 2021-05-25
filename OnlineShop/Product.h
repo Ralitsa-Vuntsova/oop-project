@@ -40,8 +40,8 @@ public:
 	const product getProduct() const;
 
 	virtual void input();
-	virtual std::ostream& print(std::ostream&) const; // will be called for the right product
+	virtual std::ostream& print(std::ostream&) const;
 };
 
-std::ostream& operator<<(std::ostream&, const product&);
+bool operator==(const Product&, const Product&);
 std::ostream& operator<<(std::ostream&, const Product&);
