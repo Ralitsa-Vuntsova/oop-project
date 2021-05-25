@@ -26,8 +26,6 @@ public:
 
 	User* login();
 	User* registration();
-
-	friend class Cart;
 };
 
 
